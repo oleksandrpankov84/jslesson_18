@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_4</title>
+</head>
+<body>
+	<header>
+		<a href="../index.html">На головну</a>
+	</header>
+	<main>
+		<p>Задача 4. Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином вибираються 3 і відображаються у окремих div (їх треба створити і додати на сторінку)</p>
+		<h2>Розвʼязок:</h2>
+		<div class="wish">
+
+		</div>
+		<script>
+			let arr=['wish_1','wish_2','wish_3','wish_4','wish_5','wish_6','wish_7','wish_8','wish_9','wish_10']
+			class Wishes{
+				constructor(arr){
+					this.wishList=[...arr]
+				}
+				get RandomIndex(){
+					return Math.floor(Math.random()*(this.wishList.length-1))
+				}
+				get Output(){
+					const outDiv=document.querySelector('.wish')
+					for (let i = 0; i < 3; i++) {
+						const wish=this.wishList[this.RandomIndex]
+						const outputWish=document.createElement('p')
+						outputWish.innerText=wish
+						outDiv.append(outputWish)
+						this.wishList=this.wishList.filter(el=>el!==wish)
+					}
+				}
+			}
+			window.onload=()=>{
+				const wishPrint=new Wishes(arr).Output
+			}
+		</script>
+	</main>
+</body>
+</html>

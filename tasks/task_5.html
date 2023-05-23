@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_5</title>
+</head>
+<style>
+	table{
+		border: 2px solid black;
+	}
+	td{
+		border: 2px solid black;
+		text-align: center;
+	}
+</style>
+<body>
+		<header>
+			<a href="../index.html">На головну</a>
+		</header>
+	<main>
+		<p>Задача 5. Відобразити таблицю 3*4 з випадковими числами (її треба динамічно створити і вставити на сторінку)</p>
+		<h2>Розвʼязок:</h2>
+		<div class="table"></div>
+		<script>
+			class Table{
+				constructor(row,column,minVal,maxVal,inputTarget){
+					this.row=row
+					this.column=column
+					this.inputTarget=inputTarget
+					this.minVal=minVal
+					this.maxVal=maxVal
+				}
+				get RandomNum(){
+					return Math.floor(Math.random()*(this.maxVal-this.minVal+1))+this.minVal
+				}
+				get render(){
+					const target=document.querySelector(this.inputTarget)
+					const myTable=document.createElement('table')
+					target.append(myTable)
+					for (let i = 0; i < this.row; i++) {
+						const myRow=document.createElement('tr')
+						for (let j = 0; j < this.column; j++) {
+							const myColumn=document.createElement('td')
+							myColumn.innerText=this.RandomNum
+							myRow.append(myColumn)
+						}
+						myTable.append(myRow)
+					}
+				}
+			}
+			window.onload=()=>{
+				const table=new Table(4,3,1,100,'.table').render
+			}
+		</script>
+	</main>
+</body>
+</html>

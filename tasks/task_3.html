@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_3</title>
+</head>
+<body>
+	<header>
+		<a href="../index.html">На головну</a>
+	</header>
+	<main>
+		<p>Задача 3. Користувач задає рік народження. Визначити кількість років користувача.</p>
+		<h2>Розвʼязок:</h2>
+		<div class="inputBirthYear">
+			<label>
+				Введіть рік народження
+				<input type="number" id="userBirthYear" value="">
+			</label>
+		</div>
+		<div class="res">
+			<p>Вік користувача: <span id="res__output"></span> років.</p>
+		</div>
+		<script>
+			window.onload=function(){
+				document.getElementById('userBirthYear').oninput=()=>{
+					let userYear= parseInt(document.getElementById('userBirthYear').value)
+					let userAge=new Date().getFullYear()-userYear
+					document.getElementById('res__output').innerText=userAge
+				}
+			}
+		</script>
+	</main>
+</body>
+</html>

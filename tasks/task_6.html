@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_6</title>
+</head>
+<body>
+	<header>
+		<a href="../index.html">На головну</a>
+	</header>
+	<main>
+		<p>Задача 6. Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з input, куди користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє значення.</p>
+		<h2>Розвʼязок:</h2>
+		<div class="container">
+			<div class="usrinp">
+				<label>
+					Введіть кількість оцінок:
+					<input type="number" class="userQtyInput" value="">
+				</label>
+			</div>
+			<div class="btn">
+				<button class="button">get table</button>
+			</div>
+			<div class="result"></div>
+		</div>
+		<script>
+			class Rate{
+				constructor({target,qtyRate}){
+					this.target=target
+					this.qtyRate=qtyRate
+				}
+				get render(){
+					// const qtyRate=document.querySelector('.userQtyInput').value
+					const inputTarget=document.querySelector(this.target)
+				const tbl=document.createElement('table')
+				tbl.classList.add('table')
+				tbl.style.cssText='border: 1px solid black;'
+				inputTarget.append(tbl)
+				for (let i = 0; i < this.qtyRate; i++) {
+					let tr=document.createElement('tr')
+					tbl.append(tr)
+					let inp=document.createElement('input')
+					inp.className='userTableInput'
+					inp.type='number'
+					tr.append(inp)
+				}
+				const btn=document.createElement('button')
+				btn.innerText='get sum'
+				btn.className='btn-get-sum'
+				inputTarget.append(btn)
+				}
+			}
+			function getSumAndPrint(){
+					const rateList=document.querySelectorAll('.userTableInput')
+					let rateSum=0
+					for (const i of rateList) {
+						rateSum+=parseFloat(i.value)
+					}
+					const average=rateSum/rateList.length
+					const printAverage=document.createElement('p')
+					printAverage.innerText=`Середне значення: ${average.toFixed(2)}`
+					document.querySelector('.result').append(printAverage)
+				}	
+
+			document.querySelector('.button').onclick=()=>{
+				const inputData={
+					target: '.result',
+					qtyRate: document.querySelector('.userQtyInput').value
+				}
+				const inp=new Rate(inputData).render
+				document.querySelector('.btn-get-sum').onclick=()=>{getSumAndPrint()}
+			}	
+			
+			
+		</script>
+
+		
+	</main>
+</body>
+</html>

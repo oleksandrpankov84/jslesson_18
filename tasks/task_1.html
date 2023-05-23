@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_1</title>
+</head>
+<body>
+	<header>
+		<a href="../index.html">На головну</a>
+	</header>
+	<main>
+		<div id="calc">
+			<label>
+				First number
+				<input type="number" id="first_number" value="">
+			</label>
+			<label>
+				Second number
+				<input type="number" id="second_number" value="">
+			</label>
+			<div class="btn">
+				<button id="add">Додати</button>
+				<button id="minus">Відняти</button>
+				<button id="multiplication">Множення</button>
+				<button id="divide">Ділення</button>
+			</div>
+			<div class="result">
+				<label>
+					Результат:
+					<input type="number" id="res" value="">
+				</label>
+			</div>
+		</div>
+		<script>
+			class Calculator{
+				constructor(){
+					this.num1=parseFloat(document.getElementById('first_number').value)
+					this.num2=parseFloat(document.getElementById('second_number').value)
+				}
+				get Sum(){
+					return this.num1+this.num2
+				}
+				get Minus(){
+					return this.num1-this.num2
+				}
+				get Multiplication(){
+					return this.num1*this.num2
+				}
+				get Divide(){
+					return this.num1/this.num2
+				}
+			}
+			// let calc=new Calculator()
+			document.getElementById('add').onclick=()=>{
+				let sum=new Calculator().Sum
+				document.getElementById('res').value=sum
+			}
+			document.getElementById('minus').onclick=()=>{
+				let minus=new Calculator().Minus
+				document.getElementById('res').value=minus
+			}
+			document.getElementById('multiplication').onclick=()=>{
+				let mult=new Calculator().Multiplication
+				document.getElementById('res').value=mult
+			}
+			document.getElementById('divide').onclick=()=>{
+				let divide=new Calculator().Divide
+				document.getElementById('res').value=divide
+			}
+			
+		</script>
+
+
+
+
+	</main>
+</body>
+</html>

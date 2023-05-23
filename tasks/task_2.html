@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task_2</title>
+</head>
+<body>
+	<header>
+		<a href="../index.html">На головну</a>
+	</header>
+	<main>
+		<p>Задача 2. Зробити конвертер валют (курси валют – константи у скрипті)</p>
+		<h2>Розвʼязок:</h2>
+		<div class="input">
+			<label>
+				Сума в гривнях
+				<input type="number" id="input__grn" value="">
+			</label>
+		</div>
+		<div class="btn">
+			<button id="convert">Ковертувати</button>
+		</div>
+		<div class="output">
+			<label class="output__euro">
+				Сума в євро
+				<input type="number" id="euro" value="">
+			</label>
+			<label class="output__usd">
+				Сума в доллорах
+				<input type="number" id="usd" value="">
+			</label>
+		</div>
+		<script>
+			class Convertor{
+				constructor(){
+					this.usdRate=38
+					this.euroRate=40
+					this.userGrn=document.getElementById('input__grn').value
+				}
+				get Euro(){
+					return this.userGrn/this.euroRate
+				}
+				get Usd(){
+					return this.userGrn/this.usdRate
+				}
+			}
+			window.onload=function(){
+				document.getElementById('convert').onclick=()=>{
+					let rateMoney=new Convertor()
+					document.getElementById('euro').value=rateMoney.Euro.toFixed(2)
+					document.getElementById('usd').value=rateMoney.Usd.toFixed(2)
+				}
+			}
+			</script>
+	</main>
+</body>
+</html>
